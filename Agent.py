@@ -15,9 +15,7 @@ class EvaluationState:
 class Frequencies:
     def __init__(self):
         self.frequencyList = {} 
-        self.incrementor = 0 # value from 0-100
-        self.TestingUp = True #testing values going up
-        self.Iterations = 0 #numtesting iterations
+
          
 #song spectrum of frequences      
 class Song(Frequencies):
@@ -60,6 +58,10 @@ class Agent:
     self.Orientation = Vector()
     self.Name = ""
     self.Predator = False
+    #frequency testing
+    self.Incrementor = 0 # value from 0-100
+    self.TestingUp = 1 #testing values going up
+    self.Iterations = 0 #numtesting iterations    
     
   def Update(self, Agent):
     return
@@ -84,9 +86,7 @@ class Frog(Agent):
         #try some changes now and again 
        
         testing = False
-        evalState = None
-     
-            
+        evalState = None 
         #find testing frequency
         for key in self.Spectrum.frequencyList.iterkeys(): 
             evalState = self.Spectrum.frequencyList[key]  
@@ -110,24 +110,18 @@ class Frog(Agent):
             #for now just up the pitch 
             
             #cycle up and down
-            if self.Spectrum.incrementor >= 100:
-                self.Spectrum.incrementor = 0 
-                if self.Spectrum.TestingUp:
-                    self.Spectrum.TestingUp = False
-                else: 
-                    self.Spectrum.TestingUp = True 
-                    self.Spectrum.Iterations += 1 # count number of iterations
-                    
-            if self.Spectrum.TestingUp:
-                val += .5
-            else:
-                val -= .5
+            if self.Incrementor >= 100:
+                self.Incrementor = 0 
+                TestingUp = -TestingUp 
+                self.Iterations += 1 # count number of iterations
+
+            val += (TestingUp * .5)
+          
                 
-           
             #remove old key
             del(self.Spectrum.frequencyList[key])
             self.Spectrum.frequencyList[val]=TestState.Testing
-            self.Spectrum.incrementor += 1
+            self.Spectrum.Incrementor += 1
              
             return
      
