@@ -58,7 +58,6 @@ class Agent:
     self.Orientation = Vector()
     self.Name = ""
     self.Predator = False
-    #frequency testing
     self.Incrementor = 0 # value from 0-100
     self.TestingUp = 1 #testing values going up
     self.Iterations = 0 #numtesting iterations    
@@ -75,11 +74,12 @@ class Agent:
 #derived class agent   
 class Frog(Agent):
     def __init__(self): 
+        Agent.__init__(self) 
+                       
         self.Spectrum = Song()
         self.InTact = 100.0
         self.LastChange=0
-        
-        
+         
     #try to come up w/ a different frequency
     def ReviseFrequency(self):
         #check amount of change to self, if it's going down, moving in right direction
@@ -112,16 +112,16 @@ class Frog(Agent):
             #cycle up and down
             if self.Incrementor >= 100:
                 self.Incrementor = 0 
-                TestingUp = -TestingUp 
+                self.TestingUp = -self.TestingUp 
                 self.Iterations += 1 # count number of iterations
 
-            val += (TestingUp * .5)
+            val += (self.TestingUp * .5)
           
                 
             #remove old key
             del(self.Spectrum.frequencyList[key])
             self.Spectrum.frequencyList[val]=TestState.Testing
-            self.Spectrum.Incrementor += 1
+            self.Incrementor += 1
              
             return
      
@@ -142,6 +142,7 @@ class Frog(Agent):
 #derived class agent   
 class BlueTailedBat(Agent):
     def __init__(self):
+        Agent.__init__(self)
         self.Spectrum = AudibleSpectrum()
       
     #derrived class  
