@@ -37,8 +37,7 @@ class AgentLoader:
                     floats = ParseFloats(ch.text)
                     for element in floats:
                         #Add a testining state to see where we are
-                        newAgent.Spectrum.frequencyList[element] = EvaluationState()
-                        newAgent.Spectrum.changeFrequencyList[element] = 0.0
+                        newAgent.Spectrum.frequencyList[element] = EvaluationState() 
                         
                         # get name       
                     if ch.tag  == "Name":         

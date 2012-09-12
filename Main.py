@@ -21,16 +21,20 @@ class Main:
     def Start(self):
         #spawn agents
         self.agentLoader = AgentLoader()
-        self.agentLoader.LoadAgentData()         
+        self.agentLoader.LoadAgentData()  
         
+        numFrogs = 1
+        numBats = 1
+        
+        #create frog instances
         for ch in self.agentLoader.returnAgentList:
             if isinstance(ch, Frog):
-                for i in range(100):
+                for i in range(numFrogs):
                     copyItem = copy.copy(ch)
                     self.FrogList[i] = copyItem
                   #make me two bats
             elif isinstance(ch, BlueTailedBat):
-                for i in range(2):
+                for i in range(numBats):
                     copyItem = copy.copy(ch)
                     self.BatList[i] = copyItem        
                     

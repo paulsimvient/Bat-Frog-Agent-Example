@@ -14,8 +14,10 @@ class EvaluationState:
 #frequencies is a dictionary, and is tested (hence bool)
 class Frequencies:
     def __init__(self):
-        self.frequencyList = {}
-        self.changeFrequencyList = {}
+        self.frequencyList = {} 
+        self.incrementor = 0 # value from 0-100
+        self.TestingUp = True #testing values going up
+        self.Iterations = 0 #numtesting iterations
          
 #song spectrum of frequences      
 class Song(Frequencies):
@@ -83,10 +85,7 @@ class Frog(Agent):
        
         testing = False
         evalState = None
-        
-        #zero out change in frequencies
-        for key in self.Spectrum.changeFrequencyList.iterkeys(): 
-            self.Spectrum.changeFrequencyList[key]=0.0
+     
             
         #find testing frequency
         for key in self.Spectrum.frequencyList.iterkeys(): 
@@ -108,15 +107,28 @@ class Frog(Agent):
                    
         if testing == True:
             val = key
-            #for now just up the pitch
-            val += .03 
+            #for now just up the pitch 
+            
+            #cycle up and down
+            if self.Spectrum.incrementor >= 100:
+                self.Spectrum.incrementor = 0 
+                if self.Spectrum.TestingUp:
+                    self.Spectrum.TestingUp = False
+                else: 
+                    self.Spectrum.TestingUp = True 
+                    self.Spectrum.Iterations += 1 # count number of iterations
+                    
+            if self.Spectrum.TestingUp:
+                val += .5
+            else:
+                val -= .5
+                
            
             #remove old key
             del(self.Spectrum.frequencyList[key])
             self.Spectrum.frequencyList[val]=TestState.Testing
-            
-            #set frequency diff for that key
-            self.Spectrum.changeFrequencyList[val] = .03
+            self.Spectrum.incrementor += 1
+             
             return
      
     #do sing
