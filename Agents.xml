@@ -12,7 +12,7 @@
      <Name>green frog 2</Name>
     <Predator>false</Predator>
    <DataPosition>2.0 3.2 1.1</DataPosition>
-    <Spectrum> 22.0 3440.0 47.0 50.0 50.0 50.0 190.0 </Spectrum>
+    <Spectrum> 22.0 3440.0 48.0 50.0 50.0 50.0 190.0 </Spectrum>
   </agent>
   
   <agent>

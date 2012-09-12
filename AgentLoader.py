@@ -12,8 +12,7 @@ def ParseFloats( stringData ):
 class AgentLoader:
     def __init__(self): 
         self.loaded = False
-        self.returnAgentList = []
-  
+        self.returnAgentList = [] 
      
      #load agent data from xml file, store as agent list      
     def LoadAgentData(self):
@@ -34,17 +33,21 @@ class AgentLoader:
                     self.returnAgentList.append(newAgent)
                      
                     # get spectrum data         
-                if ch.tag  == "Spectrum":         
-                    newAgent.Spectrum.frequencyList = ParseFloats(ch.text) 
+                if ch.tag  == "Spectrum":    
+                    floats = ParseFloats(ch.text)
+                    for element in floats:
+                        #Add a testining state to see where we are
+                        newAgent.Spectrum.frequencyList[element] = EvaluationState()
+                        newAgent.Spectrum.changeFrequencyList[element] = 0.0
                         
-                 # get name       
-                if ch.tag  == "Name":         
-                     newAgent.Name = ch.text
-                  
-                  #get predator data
-                if ch.tag  == "Predator":         
-                     newAgent.Predator = bool(ch.text) 
-    
+                        # get name       
+                    if ch.tag  == "Name":         
+                        newAgent.Name = ch.text
+                         
+                         #get predator data
+                    if ch.tag  == "Predator":         
+                        newAgent.Predator = bool(ch.text) 
+
      
             Loaded = True
         
