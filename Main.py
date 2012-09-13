@@ -40,6 +40,7 @@ class Main:
     #global update for the main class                 
     def Update(self):
          
+        someAliveFrog = False
         #doing generic update function
         for frogKey in self.FrogList.iterkeys():
            frog =  self.FrogList[frogKey]         
@@ -48,8 +49,17 @@ class Main:
                #update each
                frog.Update(bat)
                bat.Update(frog)
-                     
+               
+               #if there's still an alive frog keep going
+               if frog.Health >=0:
+                   someAliveFrog = True
+               
+        return someAliveFrog
+      
+#main class update/start                   
 MainClass = Main()
 MainClass.Start()
+
 while True:
-    MainClass.Update()
+    if MainClass.Update() == False:
+      break

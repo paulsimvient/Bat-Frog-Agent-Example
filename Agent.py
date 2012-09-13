@@ -175,7 +175,8 @@ class BlueTailedBat(Agent):
         #if it is thwack the agent
         for key in spectrum.frequencyList.iterkeys(): 
             isAudible = self.CheckFrequencyIsWithinRange(key)
-            if isAudible: agent.Thwack()
+            if isAudible: 
+                agent.Thwack()
         
         return    
        
