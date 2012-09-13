@@ -46,9 +46,10 @@ class Main:
            frog =  self.FrogList[frogKey]         
            for batKey in self.BatList.iterkeys():
                bat =  self.BatList[batKey]
+               #update each
                frog.Update(bat)
+               bat.Update(frog)
                      
- 
 MainClass = Main()
 MainClass.Start()
 while True:

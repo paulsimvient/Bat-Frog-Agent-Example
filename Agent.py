@@ -7,10 +7,10 @@ class TestState:
     
 #testing evaluationstate
 class EvaluationState:
-   def __init__(self):
-       self.state = TestState.NotTesting 
+    def __init__(self):
+        self.state = TestState.NotTesting 
         
-#song class that describes frequences of song over time
+#frequency class that describes frequences of song over time
 #frequencies is a dictionary, and is tested (hence bool)
 class Frequencies:
     def __init__(self):
@@ -63,8 +63,12 @@ class Agent:
     self.Iterations = 0 #numtesting iterations    
     
   def Update(self, Agent):
-    return
-   
+      return
+
+  def Thwack(self):
+      return
+
+ 
    #not finished yet, get dot product between me/him
   def WhereAmIComparedToHim(self, OtherAgent):
     v = Vector()
@@ -145,9 +149,33 @@ class BlueTailedBat(Agent):
         Agent.__init__(self)
         self.Spectrum = AudibleSpectrum()
       
+    #is the following frequency within range
+    def CheckFrequencyIsWithinRange(self, frequency):
+ 
+        #sort the list
+        sorteditems = sorted(self.Spectrum.frequencyList.items())
+        
+        #do a frequency compare range
+        low = sorteditems[0]
+        high = sorteditems[1]
+        if frequency > low and frequency < high:
+            return True
+        else: 
+            return False
+
     #derrived class  
-    def Update(self, Agent):
-           return    
+    def Update(self, agent):
+        
+        # get other agents audible spectrum
+        spectrum = agent.Spectrum
+     
+        #check to see if the frequency is in audible range
+        #if it is thwack the agent
+        for key in spectrum.frequencyList.iterkeys(): 
+            isAudible = self.CheckFrequencyIsWithinRange(key)
+            if isAudible: agent.Thwack()
+        
+        return    
        
        
   
