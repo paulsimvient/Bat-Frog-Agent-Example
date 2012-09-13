@@ -1,14 +1,14 @@
 
 
-there is a type of frog called the green frog (Rana clamitans)  that lives in a bog, and loves to mate. The male frog sings a simple song that has pitches corresponding to the following range
+there is a type of frog called the green frog (Rana clamitans)  that lives in a bog, and loves to mate. 
+The male frog sings a simple song that has pitches corresponding to the following range
 
 The female green frog loves the song and mates long and often with a frog that can sing the song.
-Unfortunately the male green frog has an enemy, the blue tailed swamp bat (BTSB),  that loves to eat frogs. His approach to getting lunch is as follows:
+Unfortunately the male green frog has an enemy, the blue tailed swamp bat (BTSB),  
+that loves to eat frogs. His approach to getting lunch is as follows:
+ 
 
-1) here's the song 
-2) swoops down and grabs him
-
-Now, the green frog can only be eaten if he's heard.
+Now, the green frog can only be eaten (thwacked) if he's heard.
 
 BTSB:
 Limited range of audio perception to { 45-122 hz range}

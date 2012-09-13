@@ -60,12 +60,15 @@ class Agent:
     self.Predator = False
     self.Incrementor = 0 # value from 0-100
     self.TestingUp = 1 #testing values going up
-    self.Iterations = 0 #numtesting iterations    
+    self.Iterations = 0 #numtesting iterations   
+    self.Health = 100.0 #overall health
+    self.LastHealth = 100.0
     
   def Update(self, Agent):
       return
 
   def Thwack(self):
+      self.Health -= .001
       return
 
  
@@ -121,7 +124,6 @@ class Frog(Agent):
 
             val += (self.TestingUp * .5)
           
-                
             #remove old key
             del(self.Spectrum.frequencyList[key])
             self.Spectrum.frequencyList[val]=TestState.Testing
