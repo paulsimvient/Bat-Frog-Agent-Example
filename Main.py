@@ -8,8 +8,7 @@ import copy
 cwd = os.getcwd()
  
 #import classes
-from AgentLoader import * 
-from ListUtility import *
+from AgentLoader import *  
 from Agent import *
 
 #Loads the agent data
